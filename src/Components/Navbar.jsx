@@ -99,7 +99,7 @@ function Navbar(){
     
         <DropdownMenu aria-expanded aria-label='menu desplegable'>
           <DropdownItem aria-level={1} onClick={() => navigate('/home')}>Página principal</DropdownItem>
-          <DropdownItem aria-level={2} onClick={() => navigate('/admin-register')}>Alta nueva en el sistema</DropdownItem>
+          { roles.includes('admin')&& <DropdownItem aria-level={2} onClick={() => navigate('/admin-register')}>Alta nueva en el sistema</DropdownItem> }
           <DropdownItem aria-level={3} onClick={() => navigate('/category/1')}>Sueño</DropdownItem>
           <DropdownItem aria-level={4} onClick={() => navigate('/category/2')}>Nutrición</DropdownItem>
           <DropdownItem aria-level={5} onClick={() => navigate('/category/3')}>Ejercicio físico</DropdownItem>

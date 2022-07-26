@@ -26,15 +26,12 @@ function RoutesConfig(){
           <Route path={CATEGORY} element={ <Category/> } />
           <Route path={SECTION} element={ <Section/> } />
           <Route path={ABOUTUS} element={ <AboutUs/> } />
+          
+          <Route path={USERREGISTER} element={ <PrivateRoute><UserRegister/></PrivateRoute> } />
+          <Route path={ADMINREGISTER} element={ <PrivateRoute><AdminRegister/></PrivateRoute> } />
+          <Route path={PROFILE} element={ <PrivateRoute><Profile/></PrivateRoute> } />
+          <Route path="*" element={ <Home/> } />
         </Route>
-        {/* <Route path={PRIVATE} element = {<PrivateRoute />}> */}
-        {/* <PrivateRoute> */}
-        <Route path={USERREGISTER} element={ <PrivateRoute><UserRegister/></PrivateRoute> } />
-        <Route path={ADMINREGISTER} element={ <PrivateRoute><AdminRegister/></PrivateRoute> } />
-        <Route path={PROFILE} element={ <PrivateRoute><Profile/></PrivateRoute> } />
-        {/* </PrivateRoute> */}
-        {/* </Route> */}
-        <Route path="*" element={ <Landing/> } />
       </Routes>
     </Router>
   )
