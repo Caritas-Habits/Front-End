@@ -8,9 +8,9 @@ import Profile from '../Views/Profile'
 import Section from '../Views/Section'
 import AboutUs from '../Views/AboutUs'
 import Landing from '../Views/Landing'
-import {ABOUTUS, ADMINREGISTER, CATEGORY, HOME,LOGIN,PRIVATE, PROFILE, SECTION, USERREGISTER} from '../config/Paths'
-import PublicRoute from '../Components/router/PublicRoute'
-import PrivateRoute from '../Components/router/PublicRoute'
+import {ABOUTUS, ADMINREGISTER, CATEGORY, HOME,LOGIN, PROFILE, SECTION, USERREGISTER} from '../config/Paths'
+// import PublicRoute from '../Components/router/PublicRoute'
+import PrivateRoute from '../Components/router/PrivateRoute'
 
 
 function RoutesConfig(){
@@ -19,7 +19,7 @@ function RoutesConfig(){
 
     <Router>
       <Routes>
-        <Route path="/" element = {<PublicRoute />}>
+        <Route path="/">
           <Route index element={ <Landing/> } />
           <Route path={HOME} element={ <Home/> } />
           <Route path={LOGIN} element={ <Login/> } />
@@ -27,11 +27,14 @@ function RoutesConfig(){
           <Route path={SECTION} element={ <Section/> } />
           <Route path={ABOUTUS} element={ <AboutUs/> } />
         </Route>
-        <Route path ={PRIVATE} element = {<PrivateRoute />}>
-          <Route path={USERREGISTER} element={ <UserRegister/> } />
-          <Route path={ADMINREGISTER} element={ <AdminRegister/> } />
-          <Route path={PROFILE} element={ <Profile/> } />
-        </Route>
+        {/* <Route path={PRIVATE} element = {<PrivateRoute />}> */}
+        {/* <PrivateRoute> */}
+        <Route path={USERREGISTER} element={ <PrivateRoute><UserRegister/></PrivateRoute> } />
+        <Route path={ADMINREGISTER} element={ <PrivateRoute><AdminRegister/></PrivateRoute> } />
+        <Route path={PROFILE} element={ <PrivateRoute><Profile/></PrivateRoute> } />
+        {/* </PrivateRoute> */}
+        {/* </Route> */}
+        <Route path="*" element={ <Landing/> } />
       </Routes>
     </Router>
   )

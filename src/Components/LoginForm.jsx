@@ -1,9 +1,15 @@
-import { useRef, useState, useEffect, useContext } from 'react'
+import { useRef, useState, useEffect/* , useContext */ } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
-import {AuthContextProvider} from '../context/AuthContext'
+import { useAuth } from '../context/useAuth'
+// import {AuthContextProvider} from '../context/AuthContext'
 
 function LoginForm (){
-  const { setAuth } = useContext(AuthContextProvider)
+  // const { setAuth } = useContext(AuthContextProvider)
+  const { login } = useAuth()
+  const { state } = useLocation()
+  const pathname = state?.location?.pathname ?? '/home'
+  const navigate = useNavigate()
   const userRef = useRef()
   const errRef = useRef()
   
@@ -31,17 +37,20 @@ function LoginForm (){
         const roles = response?.data?.roles
         const idUser = response?.data?.idUser
         
-        localStorage.setItem('token', accessToken)
-        localStorage.setItem('successfullyLogin', true)
-        localStorage.setItem('idUser', idUser)
-        setAuth({ email, idUser, roles, accessToken })
+        // localStorage.setItem('token', accessToken)
+        // localStorage.setItem('successfullyLogin', true)
+        // localStorage.setItem('idUser', idUser)
+        // setAuth({ email, idUser, roles, accessToken })
+
+        login({ accessToken, idUser, roles })
         setEmail('')
         setPassword('')
       })
-      setEmail('')
-      setPassword('') 
+      // setEmail('')
+      // setPassword('') 
       // go to home page after login
-      window.location.href = '/home'
+      // window.location.href = '/home'
+      navigate(pathname)
     }catch (err) {
       if (!err?.response) {
         setErrMsg('No Server Response')

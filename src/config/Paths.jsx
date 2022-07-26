@@ -1,6 +1,6 @@
 export const HOME = 'home'
 export const LOGIN = 'login'
-export const PRIVATE = 'private'
+export const PRIVATE = ''
 export const USERREGISTER = 'register'
 export const ADMINREGISTER = 'admin-register'
 export const PROFILE = 'profile/:id'
