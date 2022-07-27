@@ -81,6 +81,7 @@ function UserRegisterForm(){
         JSON.stringify(dataUpdate)
       ).then(response => {
         console.log(response)
+        localStorage.setItem('roles', ['user'])
         navigate('/home')
       })
     } catch (error) {
