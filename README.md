@@ -27,7 +27,7 @@ Distribuidas en cuatro categorias, la web permite a lxs usuarixs obtener mejor i
 ## Instalación
 
 1. Clona el repositorio con el siguiente comando: 
-`git clone https://github.com/Caritas-Habits/Front-End.git`. 
+`git clone https://github.com/Caritas-Habits/Front-End.git`
 
 2. Para ver el proyecto, necesitaras ejecutar el siguientee comando para instalar las dependencias utilizadas y de esta forma poder tener el proyecto con todas sus funciones y vistas correctamente.
 
@@ -35,14 +35,15 @@ Distribuidas en cuatro categorias, la web permite a lxs usuarixs obtener mejor i
 
 3. Luego, inicia el front-end con `npm start`, este comando inciará el front-end en http://localhost:3000.
 
-4.Para el correcto funcionamiento del front-end, deberás clonar también el repositorio de back-end: http://https://github.com/Caritas-Habits/Back-End "aqui"
+4. Para el correcto funcionamiento del front-end, deberás clonar también el repositorio del back-end: http://https://github.com/Caritas-Habits/Back-End "aqui"
 
 5. Una vez clonado, vuelve a correr el siguiente comando, pero esta vez en el repositorio del back.
-`npm install`
+
+            `npm install`
 
 6. Una vez instalado, podrás conectar con la base de datos con el siguiente comando.
 
-`npm run dev`
+            `npm run dev`
 
 
 ## Stack 
