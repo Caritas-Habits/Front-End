@@ -9,7 +9,6 @@ import Section from '../Views/Section'
 import AboutUs from '../Views/AboutUs'
 import Landing from '../Views/Landing'
 import {ABOUTUS, ADMINREGISTER, CATEGORY, HOME,LOGIN, PROFILE, SECTION, USERREGISTER} from '../config/Paths'
-// import PublicRoute from '../Components/router/PublicRoute'
 import PrivateRoute from '../Components/router/PrivateRoute'
 
 

@@ -13,15 +13,7 @@ const Section =() => {
   
   const sectionRequest = async () =>{
     try {
-      await axios.get(`/sections/${sectionId}`,
-        // {
-        //   headers:{
-        //     'Content-Type' : 'application/json',
-        //     'Access-Control-Allow-Origin' : '*',
-        //     'x-access-token': localStorage.getItem('token')
-        //   },
-        // }
-      ).then(response => {
+      await axios.get(`/sections/${sectionId}`).then(response => {
         setSection(response.data)
       })
     } catch (error) {
@@ -42,7 +34,7 @@ const Section =() => {
         if (element[0] === 'a') {
           const href = element.length === 2 ? element[1] : element[2]
 
-          return <a href={href} target="_blank" rel="noopener noreferrer" key={uuid()} className="block justify-center my-2 mx-4 decoration-solid">{element[1]}</a>
+          return <a href={href} target="_blank" rel="noopener noreferrer" key={uuid()} className="justify-center block mx-4 my-2 decoration-solid">{element[1]}</a>
         }
       })}
       <div className='m-4'>

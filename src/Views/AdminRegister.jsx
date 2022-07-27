@@ -36,16 +36,9 @@ function AdminRegister(){
       window.location.href=`mailto:${email}?&subject=Info%20de%20tu%20cuenta%20de%20caritas&body=Este%20es%20tu%20email:%20${email}%20y%20tu%20contraseña:%20${password}%20para%20que%20puedas%20iniciar%20sesión%20en%20tu%20cuenta%20http://localhost:3000/register`
 
       const response = await axios.post('/api/auth/signup', 
-        JSON.stringify({email, password}), 
-        // {
-        //   headers:{
-        //     'Content-Type' : 'application/json',
-        //     'Access-Control-Allow-Origin' : '*' 
-        //   },
-        // }
+        JSON.stringify({email, password}),
       ).then(response => {
         console.log(response)
-        // localStorage.setItem('token', response.data.token)
       })
       
       console.log(JSON.stringify(response?.data))

@@ -23,13 +23,6 @@ const Category = () => {
   const sectionsOfCategoryRequest = async () =>{
     try {
       await axios.get('/sections',
-        // {
-        //   headers:{
-        //     'Content-Type' : 'application/json',
-        //     'Access-Control-Allow-Origin' : '*',
-        //     'x-access-token': localStorage.getItem('token')
-        //   },
-        // }
       ).then(response => {
         const filterSections = response.data.filter(section => section.category == filter)
         setSections(filterSections)
