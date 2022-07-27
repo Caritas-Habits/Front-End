@@ -59,7 +59,7 @@ function Navbar(){
         setSuccessfullyLogin(false)
         setIdUser('')
         setRoles([])
-        navigate('/home')
+        window.location.reload()
       })
     } catch (error) {
       console.log(error)

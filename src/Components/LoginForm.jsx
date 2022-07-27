@@ -91,8 +91,8 @@ function LoginForm (){
             </div>
           </form>
 
-          <div className='mt-10 text-center text-orange-900 font-extralight hover:text-black hover:underline'>
-            <a href='/#'>Problemas con la contraseña?</a>
+          <div className='mt-10 font-light text-center text-orange-900 hover:text-black hover:underline'>
+            <button onClick={()=>navigate('/home')}>Volver a la página principal</button>
           </div>
         </div>
       </div>
