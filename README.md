@@ -37,6 +37,15 @@ Clona el repositorio con el siguiente comando: `git clone https://github.com/Car
 Para la construcción y desarrollo del Front-End se utilizó el stack:
 - ReactJS
 - TailwindCss
+- Axios 
+- Reactstrap
+- React icons
+- React uuid
+- React router Dom
+- Testing-library/user-event
+- Eslint
+- Toastify
+
 
 ### Equipo
 - [Ales Navarro](https://github.com/aleswebgit "Ales")
