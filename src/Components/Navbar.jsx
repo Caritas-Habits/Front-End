@@ -118,7 +118,7 @@ function Navbar(){
         <DropdownMenu aria-expanded>
           {successfullyLogin
             ? (<>
-              <DropdownItem aria-level={2} onClick={() => navigate(`/profile/${idUser}`)}>Mi perfil</DropdownItem>
+              {!roles.includes('admin') && <DropdownItem aria-level={2} onClick={() => navigate(`/profile/${idUser}`)}>Mi perfil</DropdownItem>}
               <DropdownItem aria-level={3} onClick={logout}>Desconectar</DropdownItem>
             </>)
             : <DropdownItem aria-level={2} onClick={() => navigate('/login')}>Conectar</DropdownItem> 
