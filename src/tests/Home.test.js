@@ -1,16 +1,21 @@
-import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
-import Home from '../views/Home'
-import '@testing-library/jest-dom'
-import { Link, Router } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from '../Views/Home'
 
+test('renders content', () => {
+  const goToHome = () => {
+    window.history.pushState({}, '', '/home')
+  }
+  goToHome()
 
-test ( 'render Home view' ,() => {
-    
-  render (
-    <Router>
-      <Link to="/">Home</Link>.
-      <Home />,
-    </Router>,
+  const component = render(
+    <BrowserRouter>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
+  
+  expect(component.getByText('HABITS+')).toBeInTheDocument()
 })
