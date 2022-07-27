@@ -1,9 +1,8 @@
 import { LOGIN} from '../../config/Paths'
 import {Navigate, useLocation} from 'react-router-dom'
-import { useAuth } from '../../context/useAuth'
 
 function PrivateRoute ({children}) {
-  const { isAuthenticated } = useAuth()
+  const isAuthenticated = window.localStorage.getItem('successfullyLogin') ?? false
   const location = useLocation()
 
   console.log('Hola soy un PrivateRoute')

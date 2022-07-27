@@ -6,11 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import React,{useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
-// import AuthContext from '../context/AuthProvider'
 
 function Navbar(){
-  // const { idUser } = useContext(AuthContext)
-  // const { auth } = useContext(AuthContext)
   const [idUser, setIdUser] = useState('')
   const [name, setName] = useState('')
   const [roles, setRoles] = useState([])
@@ -58,6 +55,7 @@ function Navbar(){
         localStorage.removeItem('token')
         localStorage.removeItem('successfullyLogin')
         localStorage.removeItem('idUser')
+        localStorage.removeItem('roles')
         setSuccessfullyLogin(false)
         setIdUser('')
         setRoles([])
@@ -91,7 +89,7 @@ function Navbar(){
 
   return(
     
-    <nav className='w-full flex relative justify-between items-center mx-auto px-8 h-20 '>
+    <nav className='relative flex items-center justify-between w-full h-20 px-8 mx-auto '>
       <Dropdown isOpen = {dropdownL} toggle = {openCloseDropdownL} className = 'border-transparent ' >
         <DropdownToggle className = 'bg-transparent border-0 '>
           <CgMenuBoxed className = 'text-[#BC4E2A] display-block h-[48px] w-[48px] '/>
