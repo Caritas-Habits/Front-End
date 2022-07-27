@@ -1,8 +1,11 @@
 import { useRef, useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 
 function LoginForm (){
+  const { state } = useLocation()
+  const pathname = state?.location?.pathname ?? '/home'
+  
   const navigate = useNavigate()
   const userRef = useRef()
   const errRef = useRef()
@@ -39,7 +42,7 @@ function LoginForm (){
         setEmail('')
         setPassword('')
       })
-      navigate('/home')
+      navigate(pathname)
     }catch (err) {
       if (!err?.response) {
         setErrMsg('No Server Response')
