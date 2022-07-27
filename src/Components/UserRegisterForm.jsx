@@ -112,7 +112,7 @@ function UserRegisterForm(){
         <input
           ref={ageRef}
           name="age"
-          type="text"
+          type="date"
           className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Edad"/>
       </label>
@@ -144,7 +144,9 @@ function UserRegisterForm(){
         <input
           ref={zipRef}
           name="zip"
-          type="text"
+          type="number"
+          max="99999"
+          min="00000"
           className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Código Postal"/>
       </label>
@@ -160,7 +162,8 @@ function UserRegisterForm(){
         <input
           ref={phoneRef}
           name="phone"
-          type="text"
+          type="tel"
+          pattern="[0-9]{9}"
           className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Teléfono"/>
       </label>

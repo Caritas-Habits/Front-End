@@ -113,7 +113,7 @@ function MyProfileForm(){
         <input
           ref={ageRef}
           name="age"
-          type="text"
+          type="date"
           className="w-full p-2 mt-3 text-center rounded-full"
           readOnly={read}
           placeholder="Edad"/>
@@ -149,7 +149,9 @@ function MyProfileForm(){
         <input
           ref={zipRef}
           name="zip"
-          type="text"
+          type="number"
+          max="99999"
+          min="00000"
           className="w-full p-2 mt-3 text-center rounded-full"
           readOnly={read}
           placeholder="Código Postal"/>
@@ -167,7 +169,8 @@ function MyProfileForm(){
         <input
           ref={phoneRef}
           name="phone"
-          type="text"
+          type="tel"
+          pattern="[0-9]{9}"
           className="w-full p-2 mt-3 text-center rounded-full"
           readOnly={read}
           placeholder="Teléfono"/>
