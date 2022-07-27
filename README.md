@@ -35,7 +35,8 @@ Distribuidas en cuatro categorias, la web permite a lxs usuarixs obtener mejor i
 
 3. Luego, inicia el front-end con `npm start`, este comando inciará el front-end en http://localhost:3000.
 
-4. Para el correcto funcionamiento del front-end, deberás clonar también el repositorio del back-end: http://https://github.com/Caritas-Habits/Back-End "aqui"
+4. Para el correcto funcionamiento del front-end, deberás clonar también el repositorio del back-end:
+            `git clone http://https://github.com/Caritas-Habits/Back-End`
 
 5. Una vez clonado, vuelve a correr el siguiente comando, pero esta vez en el repositorio del back.
 
@@ -59,15 +60,25 @@ Para la construcción y desarrollo del Front-End se utilizó el stack:
 - Eslint
 - Toastify
 
+##  LA APP EN UN FUTURO (v 2.0)
+- Traducción a varios idiomas
+- Poder añadir admins desde la plataforma
+- Implementación de un chatbot
+- Lista de usuarios, para que admin pueda consultar, editar, eliminar y registrar
+- Estadisticas de usuarios
+- Política de privacidad
+- Admin puede realizar el CRUD de las secciones desde el Front
+- Cuestionarios para valorar tus hábitos
+
 ##  AGRADECIMIENTOS 
 
 A Caritas CDSF por confiar en nosotros para crear la web de este proyecto, en especial a Leila por haber hecho que sea ameno, claro y por contagiarnos aún más la ilusión por este proyecto. A Factoría F5 por ofrecernos este proyecto pedagógico tan interesante. 
 
 
 ## Equipo
-- [Ales Navarro](https://github.com/aleswebgit "Ales")
-- [Alex Vidal](https://github.com/ginkgob "Álex ")
-- [Damaris Teoc](https://github.com/DamarisTeoc "Damaris")
-- [Daniel Calvo](https://github.com/LvL090 "Daniel calvo")
-- [Jessica Mejia](https://github.com/itsberriver "Jessica")
+- [Ales Navarro](https://github.com/aleswebgit "Ales")  ( [ Linkedin here ](https://www.linkedin.com/in/ales-dev/))
+- [Alex Vidal](https://github.com/ginkgob "Álex ")  ( [ Linkedin here ](https://www.linkedin.com/in/alexvidalromera/))
+- [Damaris Teoc](https://github.com/DamarisTeoc "Damaris")  ( [ Linkedin here ](https://www.linkedin.com/in/damaris-teoc-604a4223b/))
+- [Daniel Calvo](https://github.com/LvL090 "Daniel calvo")  ( [ Linkedin here ](https://www.linkedin.com/in/daniel-calvo-andreu-18a0241b8/))
+- [Jessica Mejia](https://github.com/itsberriver "Jessica") ( [ Linkedin here ](https://www.linkedin.com/in/jessicaberriver/))
 
