@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
+import { ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function LoginForm (){
   const { state } = useLocation()
@@ -13,6 +15,16 @@ function LoginForm (){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')  
   const [errorMsg, setErrMsg] = useState('')
+
+  const errorLoginAlert = () => toast.error('No te has logueado correctamente', {
+    position: 'top-center',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  })
   
   useEffect(()=>{
     userRef.current.focus()
@@ -87,7 +99,19 @@ function LoginForm (){
               <input onChange={(e)=>setPassword(e.target.value)} value={password} className='w-full p-4 text-lg text-center bg-orange-300 rounded-full placeholder:text-black' type='password' name='password' id='password' placeholder='Constraseña' />
             </div>
             <div className='px-4 pt-4 pb-2'>
-              <button type="submit" className='justify-center block w-40 p-2 m-auto text-lg text-white uppercase bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none'>Acceder</button>
+              <button type="submit" onClick={errorLoginAlert} className='justify-center block w-40 p-2 m-auto text-lg text-white uppercase bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none'>
+                Acceder
+              </button>
+              <ToastContainer 
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover/>
             </div>
           </form>
 
