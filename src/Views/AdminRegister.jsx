@@ -33,7 +33,7 @@ function AdminRegister(){
 
     try {
       
-      window.location.href=`mailto:${email}?&subject=Info%20de%20tu%20cuenta%20de%20caritas&body=Esta%20es%20tu%20email:%20${email}%20y%20tu%20contraseña:%20${password}`
+      window.location.href=`mailto:${email}?&subject=Info%20de%20tu%20cuenta%20de%20caritas&body=Este%20es%20tu%20email:%20${email}%20y%20tu%20contraseña:%20${password}%20para%20que%20puedas%20iniciar%20sesión%20en%20tu%20cuenta%20http://localhost:3000/register`
 
       const response = await axios.post('/api/auth/signup', 
         JSON.stringify({email, password}), 
@@ -60,7 +60,7 @@ function AdminRegister(){
     <>
       <Navbar/>
 
-      <section className = 'h-max mt-20 mb-20'>
+      <section className = 'mt-20 mb-20 h-max'>
 
         <p ref={errRef} className={errorMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errorMsg}</p>
 
@@ -70,12 +70,12 @@ function AdminRegister(){
           
             <form onSubmit={handleSubmit}>
               <label htmlFor='email' className='block w-[269px]'>
-                <input onChange={(e)=>setEmail(e.target.value)} value={email} required ref={userRef} id='email' name='email' type='text' className=' w-full rounded-full p-2 text-center' placeholder='Email' />
+                <input onChange={(e)=>setEmail(e.target.value)} value={email} required ref={userRef} id='email' name='email' type='text' className='w-full p-2 text-center rounded-full ' placeholder='Email' />
               </label>
               <label htmlFor='password' className='w-[269px]'>
-                <input onChange={(e)=>setPassword(e.target.value)} value={password} required id='password' name='password' type='password' className='mt-3 w-full rounded-full p-2 text-center' placeholder='Contraseña' />
+                <input onChange={(e)=>setPassword(e.target.value)} value={password} required id='password' name='password' type='password' className='w-full p-2 mt-3 text-center rounded-full' placeholder='Contraseña' />
               </label>
-              <div className='m-6 flex justify-center'>
+              <div className='flex justify-center m-6'>
                 <button type='submit' className='h-10 rounded-full bg-[#BC4E2A] px-5 text-white'>Enviar</button>
               </div>
               <div></div>

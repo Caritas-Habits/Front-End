@@ -1,31 +1,56 @@
 import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 
 function UserRegisterForm(){
   const errRef = useRef()
-  const nameRef = useRef()
-  // const surnameRef = useRef()
-  // const ageRef = useRef()
-  // const addressRef = useRef()
-  // const cityRef = useRef()
-  // const provinceRef = useRef()
-  // const zipRef = useRef()
-  // const nationalityRef = useRef()
-  // const phoneRef = useRef()
-  // const sexRef = useRef()
+  const nameRef = useRef(null)
+  const surnameRef = useRef(null)
+  const ageRef = useRef(null)
+  const addressRef = useRef(null)
+  const cityRef = useRef(null)
+  const provinceRef = useRef(null)
+  const zipRef = useRef(null)
+  const nationalityRef = useRef(null)
+  const phoneRef = useRef(null)
+  const sexRef = useRef(null)
 
+  const navigate = useNavigate()
+  const [idUser, setIdUser] = useState('')
   
   const [errorMsg, setErrMsg] = useState('')
-  const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
-  const [age, setAge] = useState('')
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [province, setProvince] = useState('')
-  const [zip, setZip] = useState('')
-  const [nationality, setNationality] = useState('')
-  const [phone, setPhone] = useState('')
-  const [sex, setSex] = useState('')
+
+  const getUserInfo = async () => {
+    try {
+      console.log('getUserInfo', idUser)
+      await axios.get(`/users/${idUser}`,
+      ).then(response => {
+        nameRef.current.value = response.data?.name ?? ''
+        surnameRef.current.value = response.data?.surname ?? ''
+        ageRef.current.value = response.data?.age ?? ''
+        addressRef.current.value = response.data?.address ?? ''
+        cityRef.current.value = response.data?.city ?? ''
+        provinceRef.current.value = response.data?.province ?? ''
+        zipRef.current.value = response.data?.zip ?? ''
+        nationalityRef.current.value = response.data?.nationality ?? ''
+        phoneRef.current.value = response.data?.phone ?? ''
+        sexRef.current.value = response.data?.sex ?? ''
+        
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getUserInfo()
+  }, [idUser])
+
+  useEffect(()=>{
+    const localIdUser = localStorage.getItem('idUser')
+    if (localIdUser) setIdUser(localIdUser)
+    if (!localIdUser) navigate('/home')
+  }, [])
   
   useEffect(()=>{
     nameRef.current.focus()
@@ -33,126 +58,127 @@ function UserRegisterForm(){
   
   useEffect(()=>{
     setErrMsg('')
-  },[ name, surname, age, address, city, province, zip, nationality, phone, sex])
+  },[ nameRef, surnameRef, ageRef, addressRef, cityRef, provinceRef, zipRef, nationalityRef, phoneRef, sexRef])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
-      await axios.post('/api/auth/signup', 
-        JSON.stringify({
-          name,
-          surname,
-          age,
-          address,
-          city,
-          province,
-          zip,
-          nationality,
-          phone,
-          sex
-        })
+      console.log('userId', idUser)
+      const dataUpdate = {
+        name: nameRef.current?.value,
+        surname: surnameRef.current?.value,
+        age: ageRef.current?.value,
+        address: addressRef.current?.value,
+        city: cityRef.current?.value,
+        province: provinceRef.current?.value,
+        zip: zipRef.current?.value,
+        nationality: nationalityRef.current?.value,
+        phone: phoneRef.current?.value,
+        sex: sexRef.current?.value
+      }
+      await axios.put(`/users/${idUser}`,
+        JSON.stringify(dataUpdate)
       ).then(response => {
         console.log(response)
+        navigate('/home')
       })
-      setName('')
-      setSurname('')
-      setAge('')
-      setAddress('')
-      setCity('')
-      setProvince('')
-      setZip('')
-      setNationality('')
-      setPhone('')
-      setSex('')
-      // go to home page after login
-      // window.location.href = '/home'
     } catch (error) {
+      console.log('error en updateProfile')
       console.log(error.response)
     }
   }
 
   return(
-    <form className="p-4 my-14 bg-[#F8D1B4] w-[313px] mx-auto rounded-3xl" onSubmit={handleSubmit}>
+    <form className="p-4 my-14 bg-[#F8D1B4] w-[313px] mx-auto rounded-3xl" onSubmit={(e) => handleSubmit(e)}>
       <h1 className="flex p-2 text-2xl items-center justify-center text-center text-[#BC4E2A] uppercase">AYÚDANOS A SABER MÁS DE TÍ</h1>
       <label className="w-full">
         <input
           ref={nameRef}
           name="name"
           type="text"
-          className="mt-6 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-6 text-center rounded-full"
           placeholder="Nombre"/>
       </label>
       <label className="w-full">
         <input
+          ref={surnameRef}
           name="surname"
           type="text"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Apellidos"/>
       </label>
       <label className="w-full">
         <input
+          ref={ageRef}
           name="age"
           type="text"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Edad"/>
       </label>
       <label className="w-full">
         <input
+          ref={addressRef}
           name="address"
           type="text"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Dirección"/>
       </label>
       <label className="w-full">
         <input
+          ref={cityRef}
           name="city"
           type="text"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Ciudad"/>
       </label>
       <label className="w-full">
         <input
+          ref={provinceRef}
           name="province"
           type="text"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Provicia"/>
       </label>
       <label className="w-full">
         <input
+          ref={zipRef}
           name="zip"
           type="text"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Código Postal"/>
       </label>
       <label className="w-full">
         <input
+          ref={nationalityRef}
           name="nationality"
           type="text"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Nacionalidad"/>
       </label>
       <label className="w-full">
         <input
+          ref={phoneRef}
           name="phone"
           type="text"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder="Teléfono"/>
       </label>
       <label className="w-full">
         <select
+          ref={sexRef}
           name="sex"
-          className="mt-3 rounded-full text-center w-full p-2"
+          className="w-full p-2 mt-3 text-center rounded-full"
           placeholder=" Me identifico como..">
           <option value="me identifico como..." className= "placeholder:text">Me identifico como..</option>
-          <option value="asf">hombre</option>
-          <option value="asf">mujer</option>
-          <option value="asf">no binarix</option>
-          <option value="asf">otro</option>
-          <option value="asf">prefiero no decirlo</option>
+          <option value="h">hombre</option>
+          <option value="m">mujer</option>
+          <option value="nb">no binarix</option>
+          <option value="o">otro</option>
+          <option value="no">prefiero no decirlo</option>
         </select>
       </label>
-      <div className="m-6 flex justify-center">
+      <div className="flex justify-center m-6">
         <button
           type="submit"
           className="h-10 px-5 bg-[#BC4E2A] rounded-full text-white">
@@ -160,8 +186,6 @@ function UserRegisterForm(){
         </button>
       </div>
       <p ref={errRef} className={errorMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errorMsg}</p>
-      {/* <div>
-      </div> */}
     </form>
   )
 }
