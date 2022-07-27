@@ -193,7 +193,7 @@ function MyProfileForm(){
       <div className="flex justify-center m-6">
         { read 
           ? (<button
-            className="h-10 px-5 bg-[#BC4E2A] rounded-full text-white"
+            className="h-10 px-5 bg-[#FDF6EC] rounded-full text-[#BC4E2A]"
             onClick={handleEditOption}
           >
           Editar
