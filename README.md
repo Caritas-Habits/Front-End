@@ -6,9 +6,7 @@ Aplicación web para mejorar los hábitos de los usuarios de Cáritas
 ## Sobre el proyecto
 
 ------------
-Habit+ nace de la necesidad de dar a conocer y enriquecer hábitos saludables dentro de la comunidad de Cáritas. 
-
-Distribuidas en cuatro categorias, la web permite a lxs usuarixs obtener mejor información sobre hábitos de sueño, deportivos, nutricionales y salud mental.  A su vez, la web permite el envio de consultas a lxs administadorxs para aclarar cualquier duda que surga sobre el seguimiento de estos hábitos. 
+La app Habits+ es una herramienta informativa sobre los principales hábitos saludables con la que se pretende que se pueda consultar información contrastada sobre éstos para mejorar nuestro bienestar. Dormir y comer bien, hacer ejercicio físico y encontrarse bien psicológicamente, es esencial para nuestra salud.
 
 ## La web en uso
 
