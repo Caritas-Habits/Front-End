@@ -27,11 +27,28 @@ Distribuidas en cuatro categorias, la web permite a lxs usuarixs obtener mejor i
 1. Posibilidad de la administradora del registro, vista, eliminación e edición (CRUD) de usuarixs
 2. Envio de un correo electrónico con las credenciales de autentificación al usuario para posterior logueo
 3. Vista y redirección de las diferentes categorias (Sueño, Deporte, Nutrición y Salud Mental) a sus respectivas secciones
-4. Posibilidad de la administradora del CRUD de las diferentes secciones o subcategorias
+4. Posibilidad de admin del CRUD de las diferentes secciones o subcategorias
 
 ### Instalación
 
-Clona el repositorio con el siguiente comando: `git clone https://github.com/Caritas-Habits/Front-End.git`. Luego, inicia el front-end con `npm start`, este comando inciará el front-end en http://localhost:3000. Para el correcto funcionamiento del front-end debes clonar e iniciar el repositorio de back-end [aqui](http://https://github.com/Caritas-Habits/Back-End "aqui")
+1. Clona el repositorio con el siguiente comando: 
+`git clone https://github.com/Caritas-Habits/Front-End.git`. 
+
+2. Para ver el proyecto, necesitaras ejecutar el siguientee comando para instalar las dependencias utilizadas y de esta forma poder tener el proyecto con todas sus funciones y vistas correctamente.
+
+npm install
+
+3. Luego, inicia el front-end con `npm start`, este comando inciará el front-end en http://localhost:3000.
+
+4.Para el correcto funcionamiento del front-end, deberás clonar también el repositorio de back-end:http://https://github.com/Caritas-Habits/Back-End "aqui"
+
+5. Una vez clonado, vuelve a correr el siguiente comando, pero esta vez en el repositorio del back.
+npm install
+
+6. Una vez instalado, podrás conectar con la base de datos con el siguiente comando.
+
+npm run dev
+
 
 ### Stack 
 Para la construcción y desarrollo del Front-End se utilizó el stack:
