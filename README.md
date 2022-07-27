@@ -16,6 +16,7 @@ Distribuidas en cuatro categorias, la web permite a lxs usuarixs obtener mejor i
 
 <img width="1487" alt="Captura de Pantalla 2022-07-25 a las 12 50 53" src="https://user-images.githubusercontent.com/99019637/180760446-47139f9b-f744-4b10-918f-453b28e9c2d2.png">
 <img width="1587" alt="Captura de Pantalla 2022-07-25 a las 12 19 06" src="https://user-images.githubusercontent.com/99019637/180756093-e7383fb9-2f48-4b77-b62e-a7059c0f9a6e.png">
+<img width="2101" alt="Captura de Pantalla 2022-07-27 a las 9 10 13" src="https://user-images.githubusercontent.com/99019637/181184252-8aa542a2-3034-41d2-acbc-661adc834cf7.png">
 ------------
 ### Deployment
 
