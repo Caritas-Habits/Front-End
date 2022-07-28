@@ -9,7 +9,6 @@ import axios from '../api/axios'
 
 function Navbar(){
   const [idUser, setIdUser] = useState('')
-  const [name, setName] = useState('')
   const [roles, setRoles] = useState([])
   const [successfullyLogin, setSuccessfullyLogin] = useState(false)
   const [dropdownL, setDropdownL] = useState(false)
@@ -39,8 +38,6 @@ function Navbar(){
       await axios.get(`/users/${idUser}`,
       ).then(response => {
         console.log(response.data)
-        const getName = response.data.name
-        setName(getName)
       })
     } catch (error) {
       console.log(error)
@@ -110,10 +107,7 @@ function Navbar(){
       }
       <Dropdown isOpen = {dropdownR} toggle = {openCloseDropdownR} className = 'border-transparent ' >
         <DropdownToggle className = 'bg-transparent border-0 '>
-          {successfullyLogin && name
-            ? <p className='text-[#BC4E2A] font-bold'>{name}</p>
-            : <BiUserCircle aria-label='icono de usuario' className='text-[#BC4E2A] display-block h-[48px] w-[48px] '/>
-          }
+          <BiUserCircle aria-label='icono de usuario' className='text-[#BC4E2A] display-block h-[48px] w-[48px] '/>
         </DropdownToggle >
         <DropdownMenu aria-expanded>
           {successfullyLogin
