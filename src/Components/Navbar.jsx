@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 
 function Navbar(){
+  const [token, setToken] = useState('')
   const [idUser, setIdUser] = useState('')
-  const [name, setName] = useState('')
   const [roles, setRoles] = useState([])
   const [successfullyLogin, setSuccessfullyLogin] = useState(false)
   const [dropdownL, setDropdownL] = useState(false)
@@ -37,10 +37,13 @@ function Navbar(){
     try {
       console.log('getUserInfo', idUser)
       await axios.get(`/users/${idUser}`,
+        {
+          headers: {
+            'authorization': `Bearer ${token}`
+          }
+        },
       ).then(response => {
         console.log(response.data)
-        const getName = response.data.name
-        setName(getName)
       })
     } catch (error) {
       console.log(error)
@@ -59,7 +62,7 @@ function Navbar(){
         setSuccessfullyLogin(false)
         setIdUser('')
         setRoles([])
-        window.location.reload()
+        navigate('/home')
       })
     } catch (error) {
       console.log(error)
@@ -78,6 +81,7 @@ function Navbar(){
       let cookieUser = localStorage.getItem('idUser')
       setIdUser(cookieUser)
     }
+    setToken(localStorage.getItem('token'))
   },[successfullyLogin])
 
   useEffect(()=>{
@@ -110,10 +114,7 @@ function Navbar(){
       }
       <Dropdown isOpen = {dropdownR} toggle = {openCloseDropdownR} className = 'border-transparent ' >
         <DropdownToggle className = 'bg-transparent border-0 '>
-          {successfullyLogin && name
-            ? <p className='text-[#BC4E2A] font-bold'>{name}</p>
-            : <BiUserCircle aria-label='icono de usuario' className='text-[#BC4E2A] display-block h-[48px] w-[48px] '/>
-          }
+          <BiUserCircle aria-label='icono de usuario' className='text-[#BC4E2A] display-block h-[48px] w-[48px] '/>
         </DropdownToggle >
         <DropdownMenu aria-expanded>
           {successfullyLogin

@@ -27,7 +27,7 @@ function RoutesConfig(){
           <Route path={ABOUTUS} element={ <AboutUs/> } />
           
           <Route path={USERREGISTER} element={ <PrivateRoute><UserRegister/></PrivateRoute> } />
-          <Route path={ADMINREGISTER} element={ <PrivateRoute><AdminRegister/></PrivateRoute> } />
+          <Route path={ADMINREGISTER} element={ <PrivateRoute filterAdmin="true"><AdminRegister/></PrivateRoute> } />
           <Route path={PROFILE} element={ <PrivateRoute><Profile/></PrivateRoute> } />
           <Route path="*" element={ <Home/> } />
         </Route>

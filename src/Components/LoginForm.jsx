@@ -12,11 +12,22 @@ function LoginForm (){
   const userRef = useRef()
   const errRef = useRef()
   
+  const [success, setSuccess] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')  
   const [errorMsg, setErrMsg] = useState('')
 
-  const errorLoginAlert = () => toast.error('No te has logueado correctamente', {
+  const errorLoginAlert = () => toast.error('Lo sentimos, no se ha podido iniciar sessión correctamente', {
+    position: 'top-center',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  })
+
+  const successRegisterAdminAlert = () => toast.success('Has iniciado sesión correctamente', {
     position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
@@ -53,6 +64,7 @@ function LoginForm (){
         
         setEmail('')
         setPassword('')
+        setSuccess(true)
       })
       navigate(pathname)
     }catch (err) {
@@ -72,9 +84,6 @@ function LoginForm (){
   
   return(
     <section className='flex items-stretch md:min-h-screen'>
-      
-      <p ref={errRef} className={errorMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errorMsg}</p>
-
       <div className='relative hidden w-1/2 items-center bg-cover bg-no-repeat lg:flex bg-[url("../src/media/img/bg.jpg")] ' >
         <div className='absolute inset-0 z-0 bg-orange-400 opacity-70'>
         </div>
@@ -98,21 +107,19 @@ function LoginForm (){
             <div className='pt-4 pb-2'>
               <input onChange={(e)=>setPassword(e.target.value)} value={password} className='w-full p-4 text-lg text-center bg-orange-300 rounded-full placeholder:text-black' type='password' name='password' id='password' placeholder='Constraseña' />
             </div>
-            <div className='px-4 pt-4 pb-2'>
-              <button type="submit" onClick={errorLoginAlert} className='justify-center block w-40 p-2 m-auto text-lg text-white uppercase bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none'>
-                Acceder
-              </button>
-              <ToastContainer 
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover/>
-            </div>
+            {success ? (
+              <div className='flex justify-center m-6'>
+                <button type='submit' onClick={successRegisterAdminAlert} className='h-10 rounded-full bg-[#BC4E2A] px-5 text-white'>Acceder</button>
+              </div>) : (
+              <div className='flex justify-center m-6'>
+                <button type='submit'  onClick={errorLoginAlert} className='h-10 rounded-full bg-[#BC4E2A] px-5 text-white'>Acceder</button>
+                <ToastContainer />
+              </div>
+              
+            )}
+      
+            <p ref={errRef} className={errorMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errorMsg}</p>
+
           </form>
 
           <div className='mt-10 font-light text-center text-orange-900 hover:text-black hover:underline'>

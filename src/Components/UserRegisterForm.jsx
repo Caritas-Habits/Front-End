@@ -19,36 +19,15 @@ function UserRegisterForm(){
   const [idUser, setIdUser] = useState('')
   
   const [errorMsg, setErrMsg] = useState('')
-
-  const getUserInfo = async () => {
-    try {
-      console.log('getUserInfo', idUser)
-      await axios.get(`/users/${idUser}`,
-      ).then(response => {
-        nameRef.current.value = response.data?.name ?? ''
-        surnameRef.current.value = response.data?.surname ?? ''
-        ageRef.current.value = response.data?.age ?? ''
-        addressRef.current.value = response.data?.address ?? ''
-        cityRef.current.value = response.data?.city ?? ''
-        provinceRef.current.value = response.data?.province ?? ''
-        zipRef.current.value = response.data?.zip ?? ''
-        nationalityRef.current.value = response.data?.nationality ?? ''
-        phoneRef.current.value = response.data?.phone ?? ''
-        sexRef.current.value = response.data?.sex ?? ''
-        
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getUserInfo()
-  }, [idUser])
-
+  const [token, setToken] = useState('')
+  
   useEffect(()=>{
     const localIdUser = localStorage.getItem('idUser')
-    if (localIdUser) setIdUser(localIdUser)
+    if (localIdUser) {
+      setIdUser(localIdUser)
+      setToken(localStorage.getItem('token'))
+    }
+    
     if (!localIdUser) navigate('/home')
   }, [])
   
@@ -78,9 +57,15 @@ function UserRegisterForm(){
         sex: sexRef.current?.value
       }
       await axios.put(`/users/${idUser}`,
-        JSON.stringify(dataUpdate)
+        JSON.stringify(dataUpdate),
+        {
+          headers: {
+            'authorization': `Bearer ${token}`
+          }
+        },
       ).then(response => {
         console.log(response)
+        localStorage.setItem('roles', ['user'])
         navigate('/home')
       })
     } catch (error) {

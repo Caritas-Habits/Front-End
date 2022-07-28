@@ -87,11 +87,10 @@ function AdminRegister(){
               {success ? (
                 <div className='flex justify-center m-6'>
                   <button type='submit' onClick={successRegisterAdminAlert} className='h-10 rounded-full bg-[#BC4E2A] px-5 text-white'>Enviar</button>
-                  <ToastContainer />
-                  
                 </div>) : (
                 <div className='flex justify-center m-6'>
                   <button type='submit'  onClick={errorRegisterAdminAlert} className='h-10 rounded-full bg-[#BC4E2A] px-5 text-white'>Enviar</button>
+                  <ToastContainer />
                 </div>
               
               )}
