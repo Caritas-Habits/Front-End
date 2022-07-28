@@ -4,6 +4,7 @@ import axios from '../api/axios'
 import Loading from './Loading'
 
 function MyProfileForm(){
+  const [token, setToken] = useState('')
   const [read, setRead] = useState(true)
   const [loading, setLoading] = useState(true)
   
@@ -25,6 +26,11 @@ function MyProfileForm(){
     try {
       console.log('getUserInfo', idUser)
       await axios.get(`/users/${idUser}`,
+        {
+          headers: {
+            'authorization': `Bearer ${token}`
+          }
+        },
       ).then(response => {
         nameRef.current.value = response.data?.name ?? ''
         surnameRef.current.value = response.data?.surname ?? ''
@@ -52,6 +58,7 @@ function MyProfileForm(){
     const localIdUser = localStorage.getItem('idUser')
     if (localIdUser) setIdUser(localIdUser)
     if (!localIdUser) navigate('/home')
+    setToken(localStorage.getItem('token'))
   }, [])
 
   const handleEditOption = (e) => {
@@ -78,7 +85,12 @@ function MyProfileForm(){
         sex: sexRef.current?.value
       }
       await axios.put(`/users/${idUser}`,
-        JSON.stringify(dataUpdate)
+        JSON.stringify(dataUpdate),
+        {
+          headers: {
+            'authorization': `Bearer ${token}`
+          }
+        },
       ).then(response => {
         console.log(response)
       })
@@ -87,8 +99,6 @@ function MyProfileForm(){
       console.log(error.response)
     }
   }
-
-  // if (loading) return <Loading />
 
   return(
     loading ? <Loading /> : (

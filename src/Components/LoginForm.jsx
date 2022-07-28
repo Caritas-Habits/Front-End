@@ -102,16 +102,7 @@ function LoginForm (){
               <button type="submit" onClick={errorLoginAlert} className='justify-center block w-40 p-2 m-auto text-lg text-white uppercase bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none'>
                 Acceder
               </button>
-              <ToastContainer 
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover/>
+              <ToastContainer />
             </div>
           </form>
 

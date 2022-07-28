@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 
 function Navbar(){
+  const [token, setToken] = useState('')
   const [idUser, setIdUser] = useState('')
   const [roles, setRoles] = useState([])
   const [successfullyLogin, setSuccessfullyLogin] = useState(false)
@@ -36,6 +37,11 @@ function Navbar(){
     try {
       console.log('getUserInfo', idUser)
       await axios.get(`/users/${idUser}`,
+        {
+          headers: {
+            'authorization': `Bearer ${token}`
+          }
+        },
       ).then(response => {
         console.log(response.data)
       })
@@ -56,7 +62,7 @@ function Navbar(){
         setSuccessfullyLogin(false)
         setIdUser('')
         setRoles([])
-        window.location.reload()
+        navigate('/home')
       })
     } catch (error) {
       console.log(error)
@@ -75,6 +81,7 @@ function Navbar(){
       let cookieUser = localStorage.getItem('idUser')
       setIdUser(cookieUser)
     }
+    setToken(localStorage.getItem('token'))
   },[successfullyLogin])
 
   useEffect(()=>{

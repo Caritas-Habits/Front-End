@@ -1,26 +1,8 @@
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from '../api/axios'
 import MyProfileForm from '../Components/MyProfileForm'
 import Navbar from '../Components/Navbar'
 import Arrow from '../media/icons/Arrow'
 
 const Profile = () => {
-  const userId = useParams().id
-
-  const userRequest = async () => {
-    try {
-      const response = await axios.get(`/users/${userId}`)
-      console.log(response)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    userRequest()
-  }, [])
-
   return (
     <>
       <Navbar />
